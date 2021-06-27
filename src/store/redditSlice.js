@@ -1,4 +1,5 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
+import {getSubredditPost, getPostComments} from '../api/reddit'
 
 export const initialState = {
   posts: [],
@@ -22,7 +23,7 @@ export const redditSlice = () =>
         state.error = false;
         state.posts = action.payload;
       },
-      failedGetPost: (state) => {
+      failedGetPosts: (state) => {
         state.isLoading = false;
         state.error = true;
       },
@@ -72,7 +73,7 @@ export default redditSlice.reducer;
 export const {
   startGetPosts,
   completeGetPosts,
-  failedGetPost,
+  failedGetPosts,
   setPosts,
   setSearchTerm,
   setSelectedSubreddit,
@@ -81,7 +82,7 @@ export const {
   failedGetComments
 } = redditSlice.actions;
 
-export const fetchPosts = (subreddit) = async (dispatch) => {
+export const fetchPosts = (subreddit) => async (dispatch) => {
   try {
     dispatch(startGetPosts());
     const posts = await getSubredditPost(subreddit);
@@ -92,7 +93,7 @@ export const fetchPosts = (subreddit) = async (dispatch) => {
       loadingComments: false,
       errorLoadingComments: false
     }));
-    dispatch(completeGetPosts());
+    dispatch(completeGetPosts(postsWithComments));
   } catch (error) {
     dispatch(failedGetPosts());
   }

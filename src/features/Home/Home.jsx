@@ -26,7 +26,7 @@ export const Home = () => {
     return getComments;
   };
 
-  if (posts.isLoading) {
+  if (isLoading) {
     return (
       <div className="postLoading">
         <h3>POST Loading</h3>
@@ -34,7 +34,7 @@ export const Home = () => {
     );
   }
 
-  if (posts.errorLoading) {
+  if (errorLoading) {
     return (
       <div className="error">
         <h2>Failed to load posts.</h2>

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {getSubreddits} from '../api/reddit';
 
 export const initialState = {
   subreddits: [],
