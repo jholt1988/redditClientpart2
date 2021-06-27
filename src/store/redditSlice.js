@@ -87,7 +87,7 @@ export const fetchPosts = (subreddit) = async (dispatch) => {
     const posts = await getSubredditPost(subreddit);
     const postsWithComments = posts.map((post) => ({
       ...post,
-      showingComments,
+      showingComments: false,
       comments: [],
       loadingComments: false,
       errorLoadingComments: false
