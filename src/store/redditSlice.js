@@ -1,5 +1,5 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import {getSubredditPost, getPostComments} from '../api/reddit'
+import { getSubredditPosts, getPostComments } from "../api/reddit";
 
 export const initialState = {
   posts: [],
@@ -9,11 +9,13 @@ export const initialState = {
   searchTerm: ""
 };
 
-export const redditSlice = () =>
-  createSlice({
+ const redditSlice = createSlice({
     name: "reddit",
     initialState: initialState,
     reducers: {
+      setPosts: (state, action) => {
+        state.posts = action.payload;
+      },
       startGetPosts: (state) => {
         state.isLoading = true;
         state.error = false;
@@ -27,9 +29,7 @@ export const redditSlice = () =>
         state.isLoading = false;
         state.error = true;
       },
-      setPosts: (state, action) => {
-        state.posts = action.payload;
-      },
+      
       setSearchTerm: (state, action) => {
         state.searchTerm = action.payload;
       },
@@ -85,7 +85,7 @@ export const {
 export const fetchPosts = (subreddit) => async (dispatch) => {
   try {
     dispatch(startGetPosts());
-    const posts = await getSubredditPost(subreddit);
+    const posts = await getSubredditPosts(subreddit);
     const postsWithComments = posts.map((post) => ({
       ...post,
       showingComments: false,

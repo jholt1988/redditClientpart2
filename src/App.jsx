@@ -1,8 +1,8 @@
-import { Home } from "./features/Home/Home";
+import Home  from "./features/Home/Home";
 import Subreddits from "./features/SubReddit/Subreddit";
-import "./styles.css";
+import "./App.css";
 
-export default function App() {
+ function App() {
   return (
     <>
     <main>
@@ -14,3 +14,5 @@ export default function App() {
     </>
   );
 }
+
+export default App
