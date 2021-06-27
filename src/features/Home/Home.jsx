@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import Post from '../Post/Post'
 import {
   selectFilteredPosts,
   fetchPosts,
@@ -26,7 +26,7 @@ export const Home = () => {
     return getComments;
   };
 
-  if (posts.loading) {
+  if (posts.isLoading) {
     return (
       <div className="postLoading">
         <h3>POST Loading</h3>

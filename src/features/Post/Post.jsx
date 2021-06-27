@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../../componets/Card/";
+import Comment from '../Comment/Comment';
 
 export const Post = (props) => {
   const { post, togglecomments } = props;
