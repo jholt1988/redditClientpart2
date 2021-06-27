@@ -81,7 +81,7 @@ export const {
   failedGetComments
 } = redditSlice.actions;
 
-export const fetchPosts = (subreddit = async (dispatch) => {
+export const fetchPosts = (subreddit) = async (dispatch) => {
   try {
     dispatch(startGetPosts());
     const posts = await getSubredditPost(subreddit);
@@ -96,9 +96,9 @@ export const fetchPosts = (subreddit = async (dispatch) => {
   } catch (error) {
     dispatch(failedGetPosts());
   }
-});
+};
 
-export const fetchComments = (index, permalink) = async (dispatch) => {
+export const fetchComments = (index, permalink) => async (dispatch) => {
   try {
     dispatch(startGetComments(index));
     const comments = await getPostComments(permalink);
@@ -106,7 +106,7 @@ export const fetchComments = (index, permalink) = async (dispatch) => {
   } catch (error) {
     dispatch(failedGetComments(index));
   }
-});
+};
 
 export const selectFilteredPosts = createSelector(
   [selectPosts, selectSearchTerm],
