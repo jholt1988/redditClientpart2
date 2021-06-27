@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Post from '../Post/Post'
+import './Home.css'
 import {
   selectFilteredPosts,
   fetchPosts,

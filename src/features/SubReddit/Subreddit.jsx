@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
-import { fetchSubreddits, selectSubreddits } from "../../store/subredditSlice";
+import { fetchSubreddits, selectSubreddits } from "../../store/subredditsSlice";
 import {
   setSelectedSubreddit,
   selectedSubreddit
 } from "../../store/redditSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Card from '../../componets/Card'
+import './Subreddit.css'  
+
 
 export const Subreddits = () => {
   const dispatch = useDispatch();
